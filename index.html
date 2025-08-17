@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - Braandy Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      width: 250px;
+      max-width: 80%;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #ff9800;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    button:hover {
+      background: #e68900;
+    }
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Braandy Store</h1>
+  <p>Something amazing is coming soon 🚀</p>
+
+  <div class="countdown" id="countdown">Launching in: Loading...</div>
+
+  <form>
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">Notify Me</button>
+  </form>
+
+  <footer>
+    &copy; 2025 Braandy Store. All rights reserved.
+  </footer>
+
+  <script>
+    // Countdown Timer
+    const countdown = document.getElementById("countdown");
+    const launchDate = new Date("Dec 1, 2025 00:00:00").getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdown.innerHTML = "We Are Live!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
